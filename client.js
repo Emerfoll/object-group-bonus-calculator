@@ -1,3 +1,9 @@
+$(document).ready(readyNow);
+function readyNow() {
+  console.log('jq');
+  $('#showMeMoney').on('click', showMoney)
+}
+
 const employees = [
   {
     name: 'Atticus',
@@ -33,8 +39,11 @@ const employees = [
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
+let employeeBonusShow = [];
+
 for (let employee of employees) {
   console.log(employeeBonusFunction(employee));
+  employeeBonusShow.push(employeeBonusFunction(employee));
 }
 
 function employeeBonusFunction(employee) {
@@ -74,8 +83,17 @@ function employeeBonusFunction(employee) {
   employeeBonus.totalCompensation = Number(employee.annualSalary) + Number(employee.annualSalary) * Number(employeeBonus.bonusPercentage);
   employeeBonus.totalBonus = employee.annualSalary * Number(employeeBonus.bonusPercentage);
 
+  
+
   return employeeBonus
 
+}
+console.log('employee bonus', employeeBonusShow);
+
+function showMoney() {
+  for (let employee of employees) {
+    $('#bonusList').append('<li>' + employeeBonusShow + '</li>');
+  }
 }
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
