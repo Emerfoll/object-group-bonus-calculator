@@ -91,8 +91,8 @@ function employeeBonusFunction(employee) {
 console.log('employee bonus', employeeBonusShow);
 
 function showMoney() {
-  for (let employee of employees) {
-    $('#bonusList').append('<li>' + employeeBonusShow + '</li>');
+  for (let i =0; i < employeeBonusShow.length; i++) {
+    $('#bonusList').append('<li>' + employeeBonusShow[i].name + '</li>');
   }
 }
 
