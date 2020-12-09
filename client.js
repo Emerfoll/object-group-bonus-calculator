@@ -42,17 +42,14 @@ const employees = [
 let employeeBonusShow = [];
 
 function calculateBonus() {
-
   for (let employee of employees) {
     console.log(employeeBonusFunction(employee));
     employeeBonusShow.push(employeeBonusFunction(employee));
   }
   showMoney();
-
 }
 
 function employeeBonusFunction(employee) {
-
   let employeeBonus = {
     name: employee.name,
     bonusPercentage: 0,
@@ -85,13 +82,13 @@ function employeeBonusFunction(employee) {
     employeeBonus.bonusPercentage = 0;
   }
 
-  employeeBonus.totalCompensation = Number(employee.annualSalary) + Number(employee.annualSalary) * Number(employeeBonus.bonusPercentage);
+  employeeBonus.totalCompensation = Number(employee.annualSalary) +
+    Number(employee.annualSalary) * Number(employeeBonus.bonusPercentage);
+
   employeeBonus.totalBonus = employee.annualSalary * Number(employeeBonus.bonusPercentage);
 
 
-
   return employeeBonus
-
 }
 
 function showMoney() {
