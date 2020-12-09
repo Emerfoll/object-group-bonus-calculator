@@ -1,7 +1,7 @@
 $(document).ready(readyNow);
 function readyNow() {
   console.log('jq');
-  $('#showMeMoney').on('click', showMoney)
+  $('#showMeMoney').on('click', calculateBonus)
 }
 
 const employees = [
@@ -41,9 +41,14 @@ const employees = [
 
 let employeeBonusShow = [];
 
-for (let employee of employees) {
-  console.log(employeeBonusFunction(employee));
-  employeeBonusShow.push(employeeBonusFunction(employee));
+function calculateBonus() {
+
+  for (let employee of employees) {
+    console.log(employeeBonusFunction(employee));
+    employeeBonusShow.push(employeeBonusFunction(employee));
+  }
+  showMoney();
+
 }
 
 function employeeBonusFunction(employee) {
@@ -83,16 +88,18 @@ function employeeBonusFunction(employee) {
   employeeBonus.totalCompensation = Number(employee.annualSalary) + Number(employee.annualSalary) * Number(employeeBonus.bonusPercentage);
   employeeBonus.totalBonus = employee.annualSalary * Number(employeeBonus.bonusPercentage);
 
-  
+
 
   return employeeBonus
 
 }
-console.log('employee bonus', employeeBonusShow);
 
 function showMoney() {
-  for (let i =0; i < employeeBonusShow.length; i++) {
-    $('#bonusList').append('<li>' + employeeBonusShow[i].name + '</li>');
+  for (let i = 0; i < employeeBonusShow.length; i++) {
+    $('#bonusList').append(`<li>${employeeBonusShow[i].name}'s bonus percentage: 
+    ${employeeBonusShow[i].bonusPercentage}% total compensation: 
+    $${employeeBonusShow[i].totalCompensation} total bonus recieved 
+    $${employeeBonusShow[i].totalBonus}</li>`);
   }
 }
 
